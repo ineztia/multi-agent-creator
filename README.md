@@ -2,22 +2,36 @@
 
 一个基于大语言模型的智能研究引擎构造系统，接收任意事项并自动生成定制化的多元专家研究引擎。
 
-## 项目结构
+## 四层架构
 
 ```
-├── AGENTS.md                    # 生成器提示词
-├── 0-build-agents.md            # 构造元指令
-├── 1-engine-design.md           # 引擎设计规范
-├── 2-example-research-result.md # 参考案例
-├── rules/                       # 通用规则库
-│   ├── research-report-writing.md
-│   ├── data-source-evaluation.md
-│   ├── quality-review-workflow.md
-│   ├── fact-check-workflow.md
-│   ├── few-shot-research-report.md
-│   └── few-shot-synthesis.md
-└── tasks/                       # 生成的引擎实例目录
+L1 元指令层（人类编写，指导构造 AI）
+├── L1-agent-builder.md       # 元指令——定义构造过程
+├── L1-agent-spec.md           # 生成器规范——定义生成器能力与方法论
+├── L1-engine-spec.md          # 引擎规范——定义引擎结构与工作流
+└── L1-research-spec.md        # 研究成果规范——定义成果标准与范例
+
+L2 生成器层（构造 AI 产出，供生成器 AI 加载）
+├── AGENTS.md                  # 生成器入口提示词
+└── rules/                     # 通用规范参考模板
+    ├── engine-ref.md           # 引擎规范参考模板
+    ├── research-ref.md         # 研究成果规范参考模板
+    ├── data-source-eval.md     # 数据源评估方法模板
+    └── quality-assurance.md    # 质量保证流程模板
+
+L3 研究引擎层（生成器产出，供引擎 AI 加载）
+└── tasks/{TASK}-{TS}/
+    ├── main.md                # 引擎入口
+    ├── progress.md            # 进度追踪
+    ├── agents/                # 专家定义
+    ├── rules/                 # 任务专属规范
+    └── XX-{维度}/             # 研究区目录
+
+L4 研究成果层（引擎产出，供人类阅读）
+└── tasks/{TASK}-{TS}/XX-*/*.md
 ```
+
+**核心约束**：层与层之间不交叉引用，每层自包含。
 
 ## 核心功能
 
@@ -30,16 +44,10 @@
 
 1. 用户输入研究事项（如决策问题、科研课题、对比分析等）
 2. 生成器分析事项属性，推导研究维度和专家配置
-3. 生成包含 `main.md` 入口的引擎实例文件
+3. 生成包含 `main.md` 入口的引擎实例文件（含任务专属 `rules/`）
 4. 另一个 AI 加载引擎执行研究，最终产出学术报告
 
 ## 使用要求
 
 - 支持大语言模型 API（用于 AI 执行研究）
-- 文件路径引用需要与 `./1-engine-design.md` 规范保持一致
-
-## 相关文档
-
-- [AGENTS.md](AGENTS.md) - 生成器完整提示词
-- [1-engine-design.md](1-engine-design.md) - 引擎设计规范
-- [2-example-research-result.md](2-example-research-result.md) - 研究成果示例
+- L1 层为规范定义，L2 层为可执行系统，两层独立不交叉引用
