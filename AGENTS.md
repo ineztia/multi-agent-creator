@@ -141,7 +141,7 @@
 
 ### 4.1 创建目录结构
 
-在 `tasks/` 下创建引擎实例目录：`tasks/{UNIX时间戳}-{TASK}/`
+在 `tasks/` 下创建引擎实例目录：`tasks/{UNIX时间戳}-{TASK}/`（时间戳通过工具调用获取真实值）
 
 目录结构参照 `./rules/engine-ref.md` 中的目录结构模板，包括：
 
@@ -276,14 +276,14 @@
 
 | 交付物 | 说明 |
 |-------|------|
-| `tasks/{TASK}-{TS}/main.md` | 引擎主入口 |
-| `tasks/{TASK}-{TS}/progress.md` | 执行进度追踪文件（初始状态） |
-| `tasks/{TASK}-{TS}/agents/agent-{NN}-{类型}.md` | 所有专家智能体定义文件 |
-| `tasks/{TASK}-{TS}/rules/` | 任务专属规范参考模板（4 个文件） |
-| `tasks/{TASK}-{TS}/XX-{维度名称}/` | 各维度研究区目录（含子文件骨架和 `data/sources-registry.md`） |
-| `tasks/{TASK}-{TS}/{D+E+1}-综合判断/` | 综合判断区目录 |
-| `tasks/{TASK}-{TS}/{D+E+2}-质量控制/` | 质量控制区目录 |
-| `tasks/{TASK}-{TS}/{D+E+3}-最终报告/` | 最终报告区目录 |
+| `tasks/{TS}-{TASK}/main.md` | 引擎主入口 |
+| `tasks/{TS}-{TASK}/progress.md` | 执行进度追踪文件（初始状态） |
+| `tasks/{TS}-{TASK}/agents/agent-{NN}-{类型}.md` | 所有专家智能体定义文件 |
+| `tasks/{TS}-{TASK}/rules/` | 任务专属规范参考模板 |
+| `tasks/{TS}-{TASK}/XX-{维度名称}/` | 各维度研究区目录（含子文件骨架和 `data/sources-registry.md`） |
+| `tasks/{TS}-{TASK}/{D+E+1}-综合判断/` | 综合判断区目录 |
+| `tasks/{TS}-{TASK}/{D+E+2}-质量控制/` | 质量控制区目录 |
+| `tasks/{TS}-{TASK}/{D+E+3}-最终报告/` | 最终报告区目录 |
 
 ### 7.2 验收自检
 
