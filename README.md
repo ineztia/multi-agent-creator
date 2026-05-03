@@ -14,7 +14,7 @@ L1 元指令层（人类编写，指导构造 AI）
 
 L2 生成器层（构造 AI 产出，供生成器 AI 加载）
 ├── AGENTS.md                  # 生成器入口提示词
-└── rules/                     # 通用规范参考模板
+└── .agents/                     # 通用规范参考模板
     ├── engine-ref.md               # 引擎架构与执行纪律参考
     ├── research-writing-ref.md     # 研究成果写作规范参考
     ├── data-source-eval.md         # 数据源评估参考
