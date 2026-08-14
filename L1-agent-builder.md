@@ -27,14 +27,14 @@ L1 元指令层（本层）
 ├── L1-research-spec.md    ← 研究成果写作标准/范例
 └── L1-common.md           ← 跨文件共享规范（内容标准、数据源评估）
          ↓
-L2 生成器层（由你产出）
+L2 生成器层（由 L1 层产出）
 ├── AGENTS.md              ← 生成器入口提示词
 └── .agents/               ← 通用规范参考模板
          ↓
-L3 引擎层（生成器运行时产出）
+L3 引擎层（由 L2 层运行时产出）
 └── tasks/{TASK}/
          ↓
-L4 成果层（引擎执行时产出）
+L4 成果层（由 L3 层执行时产出）
 └── 研究报告文件
 ```
 
@@ -125,7 +125,7 @@ L4 成果层（引擎执行时产出）
 
 | 约束项 | 要求 |
 |-------|------|
-| 最小覆盖 | `.agents/` 必须包含 `engine-ref`、`research-ref`、`data-source-eval`、`quality-assurance` 四类规范 |
+| 最小覆盖 | `.agents/` 必须包含 `engine-ref`、`research-writing-ref`、`data-source-eval`、`quality-assurance` 四类规范 |
 | 命名规范 | 遵循 `L1-common.md` §5（连字符分隔，不使用下划线） |
 | 自包含 | 转化后的模板不得引用 L1 层文件路径 |
 | 覆盖完整 | 模板合在一起须完整覆盖 L1 规范的全部核心知识 |
